@@ -1,0 +1,61 @@
+<!-- <view class="container"> -->
+    <!-- 用户 openid -->
+    <!-- <view class="userinfo">
+      <button 
+        open-type="getUserInfo" 
+        bindgetuserinfo="onGetUserInfo"
+        class="userinfo-avatar"
+        style="background-image: url({{avatarUrl}})"
+      ></button>
+      <view>
+        <button class="userinfo-nickname"  bindtap="onGetOpenid">{{userInfo.nickName?userInfo.nickName:"点击授权"}}
+        </button>
+      </view>
+    </view>
+  </view> -->
+
+
+<view wx:if="{{isHide}}">
+  <view wx:if="{{canIUse}}">
+      <!-- 用户 openid -->
+  </view>
+        <view class='header'>
+            <image src='/images/logo.png'></image>
+        </view>
+        <view class='content'>
+            <view>申请获取以下权限</view>
+            <text>获得你的公开信息(昵称，头像等)</text>
+        </view>
+        <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo" bindtap='onGetUserInfo'>
+            授权登录
+        </button>
+  </view>
+
+<view wx:else>
+    <view class="userinfo">
+      <button 
+        open-type="getUserInfo" 
+        class="userinfo-avatar"
+        style="background-image: url({{userInfo.avatarUrl}})"
+      ></button>
+      <text>{{userInfo.nickName}}</text>
+    </view>
+  <view class='msg-box'>
+    <!-- 留言 -->
+    <view class='send-box'>
+      <input bindinput="changeInputVal" class='input' type='text' value="{{inputVal}}" placeholder='请留言...' placeholder-class='place-input'></input>
+      <button  size='mini' type='primary' bindtap='addMsg'>添加</button>
+    </view>
+    <text class='msg-info' wx:if="{{msgData.length==0}}">暂无留言...</text>
+    <!-- 留言列表 -->
+    <view class='list-view'>
+      <!-- <view class='item' wx:for="{{msgData}}" wx:key="{{index}}">-->
+        <!--<text class='text1'>{{item}}</text> -->
+        <view  class='item' wx:for="{{list}}">
+          <!-- <text class='text1'>{{index}}:{{item.inputVal}}</text> -->
+          <text class='text1'>{{item.liuyanName}}:{{item.inputVal}}</text>
+          <icon type='cancel' data-index="{{item._id}}" class='close-btn' bindtap="delMsg"></icon>
+        </view>
+    </view>
+  </view> 
+</view>
