@@ -28,11 +28,6 @@
 - 不做留言的回复功能！不做、不做！除非要做社区，不然回复没有任何意义。
     
 
-
-### 微信预览
-
-![留言](https://www.cnblogs.com/images/cnblogs_com/famine/1451354/o_gh_25b2f1b6bcd7_258.jpg)
-
 ### 相关操作，参考我的博文：
 
 - [地址](https://www.cnblogs.com/famine/p/10716787.html)
