@@ -1,0 +1,17 @@
+ <!-- 大致布局模板应该是这样，，上传人的名字，日期可以不要 -->
+
+  <view class="page__bd">
+    <view class="section section_gap" wx:for-items="{{fileIdList}}" wx:for-item="item">
+      <!-- <view class="section__title">{{item.fileID}}</view> -->
+      <view class="section__ctn">
+        <view class="text">
+          <text class="text_name" wx:if="{{item.userInfo.nickName}}">上传者：{{item.userInfo.nickName}}</text>
+          <text class="text_name" wx:else>上传者：一位不知道名的小可爱~</text>
+        </view>
+        <image style="width: 200px; height: 200px; background-color: #eeeeee;" mode="{{mode}}" src="{{item.imgId}}"></image>
+        <view class="text">
+          <text class="text_time">上传时间：{{item.due}}</text>
+        </view>
+      </view>
+    </view>
+  </view>

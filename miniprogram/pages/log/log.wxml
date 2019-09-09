@@ -1,0 +1,25 @@
+<view class='bg'>
+    <image src='../../images/bg.jpg'></image>
+</view>
+<view class="page">
+  <view class="list">
+    <view class="title">开发记录——截至2019-9-9</view>
+    <view class="tip">
+      <icon type="success" size="12"/>完成
+      <icon type="info" size="12"/>即将上线
+      <icon type="waiting" size="12"/>未来目标
+      <icon type="warn" size="12"/>提示
+    </view>
+    <label ><icon type="success" size="16"/>添加开发日志页面。</label>
+    <label ><icon type="success" size="16"/>留言添加空值判断，删掉了重复空值的记录，略微美化了留言界面。</label>
+    <label ><icon type="success" size="16"/>留言按钮设置了15秒的不可用时间，防止再有人滥用。</label>
+    <label ><icon type="success" size="16"/>留言改为最新的留言显示在最前方。。搞笑的是用不用的参数获取逆序的顺序竟然不一样..把我搞懵了。</label>
+    <label ><icon type="success" size="16"/>图片展示改为最新上传的图片显示在最前方。</label>
+    <label ><icon type="success" size="16"/>图片展示添加用户昵称和上传时间。</label>
+    <label ><icon type="info" size="16"/>图片展示将可以点击图片查看大图。</label>
+    <label ><icon type="info" size="16"/>图片展示将可以可以单独预览自己上传的图片。</label>
+    <label ><icon type="waiting" size="16"/>未来（看心情）页面将使用 WeUI 组件进行重新开发。tabbar，按钮等等的改动。</label>
+    <label ><icon type="warn" size="16"/>不做留言的回复功能！不做、不做！除非要做社区，不然回复没有任何意义。</label>
+    
+  </view>
+</view>
