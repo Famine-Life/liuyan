@@ -20,6 +20,12 @@
       <navigator url="../liuyan/liuyan" open-type="navigate" class="uploader-text">
         <text>留言</text>
       </navigator>
+      <navigator url="../media/media" open-type="navigate" class="uploader-text">
+        <text>图片/视频展示</text>
+      </navigator>
+       <navigator url="../log/log" open-type="navigate" class="uploader-text">
+        <text>开发日志</text>
+      </navigator>
     </view>
   </view>
   

@@ -339,3 +339,14 @@ page{
 	}
 }
 /**雪花飘落 end**/
+
+.uploader navigator{
+  border-radius: 5px;
+  margin:15px auto;
+  width:120px;
+  background-color: green;
+  color:#fff;
+  font-size: 15px;
+}
+
+

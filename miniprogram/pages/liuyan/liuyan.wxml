@@ -26,7 +26,7 @@
             <view>申请获取以下权限</view>
             <text>获得你的公开信息(昵称，头像等)</text>
         </view>
-        <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo" bindtap='onGetUserInfo'>
+        <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
             授权登录
         </button>
   </view>
@@ -44,7 +44,7 @@
     <!-- 留言 -->
     <view class='send-box'>
       <input bindinput="changeInputVal" class='input' type='text' value="{{inputVal}}" placeholder='请留言...' placeholder-class='place-input'></input>
-      <button  size='mini' type='primary' bindtap='addMsg'>添加</button>
+      <button  size='mini' type='primary' bindtap='addMsg' disabled="{{disabled}}" >添加</button>
     </view>
     <text class='msg-info' wx:if="{{msgData.length==0}}">暂无留言...</text>
     <!-- 留言列表 -->
@@ -53,7 +53,7 @@
         <!--<text class='text1'>{{item}}</text> -->
         <view  class='item' wx:for="{{list}}">
           <!-- <text class='text1'>{{index}}:{{item.inputVal}}</text> -->
-          <text class='text1'>{{item.liuyanName}}:{{item.inputVal}}</text>
+          <text class='liuyanName'>{{item.liuyanName}}</text><text class="liuyanFH">说：</text><text class="liuyanText">{{item.inputVal}}</text>
           <icon type='cancel' data-index="{{item._id}}" class='close-btn' bindtap="delMsg"></icon>
         </view>
     </view>

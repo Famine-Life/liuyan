@@ -1,8 +1,10 @@
 //liuyan.js
 //获取应用实例
-var app = getApp()
+var app = getApp();
 Page({
+
   data: {
+    disabled: false,
     avatarUrl: './user-unlogin.png',
     userInfo: {},
     logged: false,
@@ -52,7 +54,7 @@ Page({
   },
   delMsg(ev) {
     //拿到设置的该留言的id
-     console.log(ev.target.dataset.index);
+     console.log("delete id",ev.target.dataset.index);
      const id = ev.target.dataset.index;
     const db=wx.cloud.database('wonder');
     db.collection('db-wonder').doc(id).remove({
@@ -65,40 +67,49 @@ Page({
 
      this.onShowList();
   },
-  addMsg() {
+  addMsg() {    //添加留言方法
      console.log(this.data.inputVal);
-    const db = wx.cloud.database('wonder');
-    const that=this;
-    db.collection('db-wonder').add({
-      // data 字段表示需新增的 JSON 数据
-      data: {
-        // _id: 'todo-identifiant-aleatoire', 
-        // 可选自定义 _id，在此处场景下用数据库自动分配的就可以了
-        inputVal: this.data.inputVal,
-        liuyanName: this.data.liuyanName,
-        description: 'learn cloud database',
-        due: new Date(),
-        show: true
-      },
-      success(res) {
-        console.log("add success!");
-        that.onShowList();
-        // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-        console.log(res)
-      }
-    })
-    
-    //设置显示效果，添加数据到数据库后，更新data中的文字
-    // var list = this.data.list;
-    // list.push({
-    //    inputVal:this.data.inputVal
-    // });
+     if(this.data.inputVal != '')
+     {
+        const db = wx.cloud.database('wonder');
+        const that=this;
+        db.collection('db-wonder').add({
+          // data 字段表示需新增的 JSON 数据
+          data: {
+            // _id: 'todo-identifiant-aleatoire', 
+            // 可选自定义 _id，在此处场景下用数据库自动分配的就可以了
+            inputVal: this.data.inputVal,
+            liuyanName: this.data.liuyanName,
+            description: 'learn cloud database',
+            due: new Date().getMilliseconds,
+            show: true
+          },
+          success(res) {
+            console.log("add success!");
+            that.onShowList();
+            // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+            console.log(res)
+           
+          }
+        })
+        //设置留言框的值为空
+        this.setData({
+          inputVal:'',   //设置初始值为空
+          disabled: true
+        });
+        //定时器 15秒后才恢复留言按钮的使用
+       setTimeout((function callback() {
+         this.setData({ disabled: false });
+       }).bind(this), 15000);
 
-    //设置留言框的值为空
-    this.setData({
-      inputVal:''   //设置初始值为空
-    });
-
+     }else{
+       wx.showToast(
+         {
+         title: '请填写内容~',
+         icon: 'none'
+       })
+     }
+     
   },
 
   //事件处理函数
@@ -161,6 +172,8 @@ Page({
               });
             }
           });
+          that.onGetOpenid();
+          console.log("app.globalData.openid:",app.globalData.openid);
         } else {
           // 用户没有授权
           // 改变 isHide 的值，显示授权页面
@@ -184,7 +197,9 @@ Page({
       //授权成功后,通过改变 isHide 的值，让实现页面显示出来，把授权页面隐藏起来
       that.setData({
         isHide: false,
-        liuyanName:e.detail.userInfo.nickName
+        liuyanName:e.detail.userInfo.nickName,
+        userInfo: e.detail.userInfo,
+        logged: true
       });
     } else {
       //用户按了拒绝按钮
@@ -203,6 +218,7 @@ Page({
     }
   },
   onGetUserInfo: function (e) {
+    console.log("onGetUserInfo")
     if (!this.logged && e.detail.userInfo) {
       this.setData({
         logged: true,

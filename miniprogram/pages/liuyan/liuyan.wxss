@@ -72,11 +72,20 @@ page {
   /* clear: both; */
   border-bottom: 1px dashed #ccc;
   line-height: 30px;
+  font-size: 12px;
 }
-.text1{
+.liuyanName{
   float: left;
-  width: 80%;
+  width: auto;
+  padding-right: 5px;
 }
+.liuyanText{
+  color: #7dbfe6;
+}
+.liuyanFH{
+  color:#eba850;
+}
+
 .close-btn{
   float: right;
   width: 8%;
