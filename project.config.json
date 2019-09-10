@@ -10,7 +10,7 @@
 	},
 	"appid": "wx2c74a2f6ed845a54",
 	"projectname": "xcx-net",
-	"libVersion": "2.2.5",
+	"libVersion": "2.8.2",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",

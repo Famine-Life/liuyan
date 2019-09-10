@@ -16,7 +16,7 @@
     <label ><icon type="success" size="16"/>留言改为最新的留言显示在最前方。。搞笑的是用不用的参数获取逆序的顺序竟然不一样..把我搞懵了。</label>
     <label ><icon type="success" size="16"/>图片展示改为最新上传的图片显示在最前方。</label>
     <label ><icon type="success" size="16"/>图片展示添加用户昵称和上传时间。</label>
-    <label ><icon type="info" size="16"/>图片展示将可以点击图片查看大图。</label>
+    <label ><icon type="success" size="16"/>图片展示可以点击图片查看大图。</label>
     <label ><icon type="info" size="16"/>图片展示将可以可以单独预览自己上传的图片。</label>
     <label ><icon type="waiting" size="16"/>未来（看心情）页面将使用 WeUI 组件进行重新开发。tabbar，按钮等等的改动。</label>
     <label ><icon type="warn" size="16"/>不做留言的回复功能！不做、不做！除非要做社区，不然回复没有任何意义。</label>

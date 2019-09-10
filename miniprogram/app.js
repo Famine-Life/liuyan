@@ -14,7 +14,8 @@ App({
     this.globalData = {
       fileID:'',
       fileName:'',
-      userInfo:''
+      userInfo:'',
+      resList:[]
     }
   },
   //多张图片上传
@@ -45,6 +46,10 @@ App({
         console.log("全局变量测试", that.globalData.fileID);
         console.log("上传成功回调：",resp);
         console.log("上传成功回调：",resp.fileID);
+        that.globalData.resFileID = resp.fileID;
+        that.globalData.resList.push(that.globalData.resFileID);
+        console.log("resList", that.globalData.resList);  //上传回调的fileID存入一个全局数组
+
         console.log("uploadFile userInfo:",that.globalData.userInfo);
 
         //储存信息到数据库====================================================================================
@@ -96,21 +101,19 @@ App({
             success: function (res) {
               if (res.confirm) {
                 console.log('用户点击确定')
-                //做页面跳转，或者做弹窗用来展示刚刚上传的图片
+                //做页面跳转，或者做弹窗用来展示刚刚上传的图片-----------------
                 wx.navigateTo({
-                  url: '../media/media',
+                  url: '../uploadedImageList/uploadedImageList',
                   events: {
-                    // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+                    // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据。。
                     acceptDataFromOpenedPage: function (data) {
-                      console.log(data)
+                      console.log("acceptDataFromOpenedPage",data)
                     },
-                    someEvent: function (data) {
-                      console.log(data)
-                    }
                   },
                   success: function (res) {
                     // 通过eventChannel向被打开页面传送数据
-                    res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'test' })
+                    res.eventChannel.emit('acceptDataFromOpenerPage', { data: that.globalData.resFileID })
+                    //。。。emmm,小程序太笨了。这就是页面和js不分离，不好的地方。只能传递一个条数据。。多条数据还是只能用全局变量
                   }
                 })
 
@@ -164,6 +167,33 @@ App({
         console.error('[云函数] [login] 调用失败', err)
       }
     })
+  },
+  previewImage: function (e) {
+      var current = e.target.dataset.src;
+      const urls = [];
+      urls.push(current);
+      wx.previewImage({
+        current: current, // 当前显示图片的http链接
+        urls: urls // 需要预览的图片http链接列表
+      })
+
+
+    // console.log("imgFileID from dataset:", e.target.dataset.index);
+    // const imgFileID = e.target.dataset.index;
+    // wx.navigateTo({
+    //   url: '../showBigImg/showBigImg',
+    //   events: {
+    //     // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据。。
+    //     acceptDataFromOpenedPage: function (data) {
+    //       console.log("acceptDataFromOpenedPage", data)
+    //     },
+    //   },
+    //   success: function (res) {
+    //     // 通过eventChannel向被打开页面传送数据
+    //     res.eventChannel.emit('acceptDataFromOpenerPage', { data: imgFileID })
+    //     //。。。emmm,小程序太笨了。这就是页面和js不分离，不好的地方。只能传递一个条数据。。多条数据还是只能用全局变量
+    //   }
+    // })
   },
 
   

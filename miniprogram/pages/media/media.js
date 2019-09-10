@@ -258,8 +258,10 @@ Page({
         Placeholder:''
       })
   },
-
+  previewImage: app.previewImage,
+ 
   onShow:function(){
+    
   },
 
   /**

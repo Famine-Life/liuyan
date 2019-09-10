@@ -58,16 +58,26 @@ checkbox, radio{
     margin-bottom: 10px;
 }
 
-.page {
-    min-height: 100%;
-    flex: 1;
-    background-color: #FBF9FE;
-    font-size: 16px;
-    font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
-    overflow: hidden;
+.bg{
+  position:relative;
+  z-index: 0;
 }
-.page__hd{
-    padding: 40px;
+.bg image{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 0;
+  top: 0;
+
+}
+.page__bd{
+  display: block;
+  z-index: 22;
+  margin-top: 100rpx;
+  text-align: center;
+  padding: 40px;
+  position: absolute;
+
 }
 .page__title{
     display: block;
@@ -80,6 +90,7 @@ checkbox, radio{
 }
 
 .section{
+    height:200px; 
     margin-bottom: 40px;
 }
 .section_gap{
@@ -98,59 +109,3 @@ checkbox, radio{
 
 }
 
-.uploader_button,
-.hiddenbtn{
-  border: 1rpx #09BB07 solid;
-  border-radius: 50rpx;
-  background-color: #C9C9C9;
-  color:#09BB07
-}
-
-.userinfo, .uploader, .tunnel {
-  margin-top: 40rpx;
-  height: 140rpx;
-  width: 100%;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-left: none;
-  border-right: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  transition: all 300ms ease;
-}
-.userinfo-avatar {
-  z-index: 100;
-  width: 100rpx;
-  height: 100rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-  background-size: cover;
-  background-color: white;
-}
-
-.userinfo-avatar:after {
-  border: none;
-}
-
-.loginBtn{
-  background-color: #09BB07;
-  color: #fff;
-}
-
-.text{
-  font-size: 14px;
-
-}
-
-.text_name{
-  background-color: rgb(227, 228, 227);
-  text-align: left;
-  display: block;
-  padding-left: 50px;
-
-}
-.text_time{
-  font-size: 12px;
-  background-color: rgb(227, 228, 227);
-}
